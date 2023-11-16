@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'bootstrap5',
     "rest_framework",
-    "webControl"
+    "dashboard",
+    "api"
 ]
 
 MIDDLEWARE = [
