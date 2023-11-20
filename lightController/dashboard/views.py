@@ -1,9 +1,8 @@
 from django.shortcuts import render
-from dashboard.gpio import gpio_controller
-import requests
+from dashboard.gpio import turn_off_led, turn_on_led, toggle_mode
 import json
 
-PI_IP_ADDR = '192.168.2.178'
+PI_IP_ADDR = '192.168.2.178:8000'
 
 def dashboard(request):
     out = ''
@@ -35,18 +34,18 @@ def dashboard(request):
             # if selected, turn on via put request
             values = {"name": "auto"}
             r = requests.put('http://' + PI_IP_ADDR + '/api/mode/1/', json=values)
-            gpio_controller.auto_mode()
+            auto_mode()
 
         else:
             # if not selected, turn off via put request
             values = {"name": "manual"}
             r = requests.put('http://' + PI_IP_ADDR + '/api/mode/1/', json=values)
-            gpio_controller.toggle_mode()
+            toggle_mode()
 
             if manual_state:
-                gpio_controller.turn_on_led()
+                turn_on_led()
             else:
-                gpio_controller.turn_off_led()
+                turn_off_led()
 
     
     # get state of state variable, load as json and set currentState variable
