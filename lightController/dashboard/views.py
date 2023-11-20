@@ -8,8 +8,11 @@ def dashboard(request):
     out = ''
 
 
+    if request is None:
+        # Handle the case where the request is None
+       pass; 
     # For POST requests to page
-    if request.method == 'POST':
+    elif request.method == 'POST':
 
         # Check if the power on checkbox is selected
         # Update value
