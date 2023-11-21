@@ -54,7 +54,10 @@ In order to run the light controller application, the circuit must be built as s
 
 Install python dependencies for project. (Suggest running in virtual environment).
 
-`pip install -r requirements.txt`
+```
+cd lightController
+pip install -r requirements.txt
+```
 
 ### Create Databases
 
